@@ -1,0 +1,39 @@
+= The planning
+
+Screen 1:
+
+Manga List
+
+Thumbnail          Name           Edit button
+Thumbnail          Name           Edit button
+Thumbnail          Name           Edit button
+
+                                Add new Manga button
+
+
+Screen 2:
+
+Manga    Edit button
+
+Image 
+Name
+Author
+Status
+Volumes
+Chapters
+
+Read Current
+Read from start [ input page/chapter/volumn default 1]
+
+
+Screen 3:
+
+image (page 1)
+
+image (page 2)
+
+image (page 3)
+
+left side is shortcut for imgs/comments/translate (right side nav that can open and display lot of information)
+scrolldown display current page/chapter name/volumn/title
+
