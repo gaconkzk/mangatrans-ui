@@ -6,15 +6,21 @@ import Update exposing (update)
 import View exposing (view)
 import Routing
 import Navigation exposing (Location)
-import Commands exposing (fetchPlayers)
+import Commands exposing (fetchPlayers, fetchMangas)
 
 init : Location -> ( Model, Cmd Msg )
 init location =
     let
       currentRoute = 
         Routing.parseLocation location
+      fet = 
+        case currentRoute of
+            Models.MangasRoute ->
+                fetchMangas
+            _ ->
+                fetchPlayers
     in
-        ( initialModel currentRoute, fetchPlayers )
+        ( initialModel currentRoute, fet )
 
 subscriptions : Model -> Sub Msg
 subscriptions model =

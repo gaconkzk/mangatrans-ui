@@ -2,7 +2,7 @@ module Update exposing (..)
 
 import Commands exposing (savePlayerCmd)
 import Msgs exposing (Msg)
-import Models exposing (Model, Player)
+import Models exposing (Model, Player, Manga)
 import Routing exposing (parseLocation)
 import RemoteData
 import Navigation
@@ -11,6 +11,8 @@ update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case msg of
         Msgs.OnFetchPlayers response -> ( { model | players = response }, Cmd.none )
+
+        Msgs.OnFetchMangas response -> ( { model | mangas = response }, Cmd.none )
 
         Msgs.ChangeLocation path ->
             ( { model | changes = model.changes +1 }, Navigation.newUrl path )

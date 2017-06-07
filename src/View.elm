@@ -3,8 +3,9 @@ module View exposing (..)
 import Html exposing (Html, div, text)
 import Msgs exposing (Msg)
 import Home.View
-import Models exposing (Model, PlayerId)
+import Models exposing (Model, PlayerId, MangaId)
 import Players.List
+import Mangas.List
 import Players.Edit
 import RemoteData
 
@@ -18,6 +19,8 @@ page model =
     case model.route of
         Models.HomeRoute ->
             Home.View.view
+        Models.MangasRoute ->
+            Mangas.List.view model.mangas
         Models.PlayersRoute ->
             Players.List.view model.players
         Models.PlayerRoute id ->

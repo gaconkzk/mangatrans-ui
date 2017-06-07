@@ -5,8 +5,32 @@ import Json.Decode as Decode
 import Json.Decode.Pipeline exposing (decode, required)
 import Json.Encode as Encode
 import Msgs exposing (Msg)
-import Models exposing (PlayerId, Player)
+import Models exposing (PlayerId, Player, MangaId, Manga)
 import RemoteData
+
+fetchMangas: Cmd Msg
+fetchMangas =
+    Http.get fetchMangasUrl mangasDecoder
+        |> RemoteData.sendRequest
+        |> Cmd.map Msgs.OnFetchMangas
+
+fetchMangasUrl: String
+fetchMangasUrl =
+    "http://localhost:4000/mangas"
+
+mangasDecoder : Decode.Decoder (List Manga)
+mangasDecoder =
+    Decode.list mangaDecoder
+
+mangaDecoder : Decode.Decoder Manga
+mangaDecoder =
+    decode Manga
+        |> required "id" Decode.string
+        |> required "name" Decode.string
+        |> required "author" Decode.string
+        |> required "status" Decode.string
+        |> required "volumes" Decode.int
+        |> required "chapters" Decode.int
 
 fetchPlayers: Cmd Msg
 fetchPlayers =

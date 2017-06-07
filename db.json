@@ -30,5 +30,15 @@
       "name": "Jaime",
       "level": 1
     }
+  ],
+  "mangas": [
+    {
+      "id": "1",
+      "name": "Offside",
+      "author": "xxx",
+      "status": "incompleted",
+      "volumes": 22,
+      "chapters": 1221
+    }
   ]
 }

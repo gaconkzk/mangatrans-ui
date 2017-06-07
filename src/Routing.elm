@@ -1,7 +1,7 @@
 module Routing exposing (..)
 
 import Navigation exposing (Location)
-import Models exposing (PlayerId, Route(..))
+import Models exposing (PlayerId, MangaId, Route(..))
 import UrlParser exposing (..)
 import Html
 import Html.Events exposing (onWithOptions)
@@ -11,6 +11,7 @@ matchers : Parser (Route -> a) a
 matchers =
     oneOf
         [ map HomeRoute top
+        , map MangasRoute (s "mangas")
         , map PlayerRoute (s "players" </> string)
         , map PlayersRoute (s "players")
         ]
@@ -26,6 +27,10 @@ parseLocation location =
 homePath: String
 homePath =
     "/"
+
+mangasPath : String
+mangasPath =
+    "/mangas"
 
 playersPath : String
 playersPath =

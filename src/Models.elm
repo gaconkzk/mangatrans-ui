@@ -4,6 +4,7 @@ import RemoteData exposing (WebData)
 
 type alias Model = 
     { players : WebData (List Player) 
+    , mangas : WebData (List Manga)
     , route : Route
     , changes  :Int
     }
@@ -11,6 +12,7 @@ type alias Model =
 initialModel : Route -> Model
 initialModel route = 
     { players = RemoteData.Loading
+    , mangas = RemoteData.Loading
     , route = route
     , changes = 0
     }
@@ -18,6 +20,8 @@ initialModel route =
 type alias PlayerId =
     String
 
+type alias MangaId = 
+    String
 
 type alias Player =
     { id: PlayerId
@@ -25,8 +29,18 @@ type alias Player =
     , level: Int
     }
 
+type alias Manga =
+    { id: MangaId
+    , name: String
+    , author: String
+    , status: String
+    , volumes: Int
+    , chapters: Int
+    }
+
 type Route = 
       HomeRoute
+    | MangasRoute
     | PlayersRoute
     | PlayerRoute PlayerId
     | NotFoundRoute
