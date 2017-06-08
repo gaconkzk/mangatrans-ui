@@ -17,7 +17,7 @@ view response =
 nav : Html Msg
 nav =
     div [ class "clearfix mb2 white bg-black p1" ]
-        [ div [ class "left ps" ] [ text "Players" ] ]
+        [ div [ class "left ps" ] [ text "Mangas" ] ]
 
 list : List Manga -> Html Msg
 list mangas =

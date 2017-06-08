@@ -16,7 +16,7 @@ fetchMangas =
 
 fetchMangasUrl: String
 fetchMangasUrl =
-    "http://localhost:4000/mangas"
+    "http://localhost:9001/api/mangas"
 
 mangasDecoder : Decode.Decoder (List Manga)
 mangasDecoder =
@@ -31,6 +31,7 @@ mangaDecoder =
         |> required "status" Decode.string
         |> required "volumes" Decode.int
         |> required "chapters" Decode.int
+        |> required "lang" Decode.string
 
 fetchPlayers: Cmd Msg
 fetchPlayers =

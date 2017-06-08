@@ -36,6 +36,7 @@ type alias Manga =
     , status: String
     , volumes: Int
     , chapters: Int
+    , lang: String
     }
 
 type Route = 
