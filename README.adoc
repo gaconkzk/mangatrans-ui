@@ -1,4 +1,4 @@
 = The manga reader/translate project
 
-Just my hobbies projects.
+Just my hobbies project. This contains the web-client code.
 
