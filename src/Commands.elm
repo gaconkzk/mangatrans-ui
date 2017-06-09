@@ -2,7 +2,7 @@ module Commands exposing (..)
 
 import Http
 import Json.Decode as Decode
-import Json.Decode.Pipeline exposing (decode, required)
+import Json.Decode.Pipeline exposing (decode, required, optional)
 import Json.Encode as Encode
 import Msgs exposing (Msg)
 import Models exposing (PlayerId, Player, MangaId, Manga)
@@ -27,11 +27,12 @@ mangaDecoder =
     decode Manga
         |> required "id" Decode.string
         |> required "name" Decode.string
-        |> required "author" Decode.string
+        |> optional "author" Decode.string "unknown"
         |> required "status" Decode.string
-        |> required "volumes" Decode.int
-        |> required "chapters" Decode.int
+        |> optional "volumes" Decode.int -1
+        |> optional "chapters" Decode.int -1
         |> required "lang" Decode.string
+        |> optional "url" Decode.string "NA"
 
 fetchPlayers: Cmd Msg
 fetchPlayers =

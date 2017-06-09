@@ -54,7 +54,7 @@ mangaRow manga =
     tr []
         [ td [] [ text manga.id ]
         , td [] [ text manga.name ]
-        , td [] [ text manga.author ]
+        , td [] [ text (toString manga.author) ]
         , td [] [ text manga.status ]
         , td [] [ text (toString manga.volumes) ]
         , td [] [ text (toString manga.chapters) ]
