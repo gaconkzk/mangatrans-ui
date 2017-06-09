@@ -15,6 +15,7 @@ module.exports = {
                 use: [
                     'style-loader',
                     'css-loader',
+                    'resolve-url-loader',
                 ]
             },
             {
@@ -33,6 +34,10 @@ module.exports = {
                 query: {
                     useRelativePath: false
                 }
+            },
+            {
+                test: /\.(png|jpg|gif)$/,
+                loader: 'file-loader',
             },
             {
                 test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,

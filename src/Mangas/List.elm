@@ -1,7 +1,7 @@
 module Mangas.List exposing (..)
 
 import Html exposing (..)
-import Html.Attributes exposing (class, href)
+import Html.Attributes exposing (class, href, style)
 import Msgs exposing (Msg)
 import Models exposing (Manga)
 import RemoteData exposing (WebData)
@@ -21,21 +21,40 @@ nav =
 
 list : List Manga -> Html Msg
 list mangas =
-    div [ class "ps" ]
-        [ table []
-            [ thead []
-                [ tr [] 
-                    [ th [] [ text "Id" ]
-                    , th [] [ text "Name" ]
-                    , th [] [ text "Author" ]
-                    , th [] [ text "Status" ]
-                    , th [] [ text "Volumes" ]
-                    , th [] [ text "Chapters" ]
-                    ]
-                ]
-            , tbody [] (List.map mangaRow mangas )
-            ]
-        ]
+    div [ class "container" ] [
+        dl [ class "bookshelf" ] ( List.map mangaRow mangas )
+    ]
+       
+    -- div [ class "ps" ]
+    --     [ table []
+    --         [ thead []
+    --             [ tr [] 
+    --                 [ th [] [ text "Id" ]
+    --                 , th [] [ text "Name" ]
+    --                 , th [] [ text "Author" ]
+    --                 , th [] [ text "Status" ]
+    --                 , th [] [ text "Volumes" ]
+    --                 , th [] [ text "Chapters" ]
+    --                 ]
+    --             ]
+    --         , tbody [] (List.map mangaRow mangas )
+    --         ]
+    --     ]
+
+mangaRow: Manga -> Html Msg
+mangaRow manga =
+    div [] [
+        dt [ class "cssmastery", style [("background", "url('"++manga.url++"')")] ] [ span [] [ text manga.name ] ],
+        dd [] [text "hello"]
+    ]
+    -- tr []
+    --     [ td [] [ text manga.id ]
+    --     , td [] [ text manga.name ]
+    --     , td [] [ text (toString manga.author) ]
+    --     , td [] [ text manga.status ]
+    --     , td [] [ text (toString manga.volumes) ]
+    --     , td [] [ text (toString manga.chapters) ]
+    --     ]
 
 maybeList: WebData (List Manga) -> Html Msg
 maybeList response =
@@ -49,13 +68,3 @@ maybeList response =
         RemoteData.Failure error ->
             text (toString error)
 
-mangaRow: Manga -> Html Msg
-mangaRow manga =
-    tr []
-        [ td [] [ text manga.id ]
-        , td [] [ text manga.name ]
-        , td [] [ text (toString manga.author) ]
-        , td [] [ text manga.status ]
-        , td [] [ text (toString manga.volumes) ]
-        , td [] [ text (toString manga.chapters) ]
-        ]
