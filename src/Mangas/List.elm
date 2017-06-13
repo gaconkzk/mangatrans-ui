@@ -1,6 +1,7 @@
 module Mangas.List exposing (..)
 
 import Html exposing (..)
+import SemanticUi exposing (..)
 import Html.Attributes exposing (class, href, style)
 import Msgs exposing (Msg)
 import Models exposing (Manga)
